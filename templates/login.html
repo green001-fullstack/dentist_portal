@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-body">
+    <h1 class="logo">Dentists Portal App</h1>
+    <div class="login-container">
+        <div class="login-header">
+            <h1 class="head-text">Welcome Back</h1>
+            <div class="login-dash"></div>
+            <p>Access your dental appointments and records</p>
+        </div>
+        <form method="POST" action="/login" class="login-form">
+            <div class="login-form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Enter your email" id="email" required>
+            </div>
+            <div class="login-form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="......" id="password" required>
+            </div>
+            <button type="submit" class="login-btn">Log In</button>
+        </form>
+        <p class="login-register">You don't have an account? <a href="/register">Register</a></p>
+    </div>
+</div>
+{% endblock %}

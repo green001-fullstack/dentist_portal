@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+   {% block content %}
+        <div class="dashboard-body">
+        <div class="dashboard-header">
+            <div class="dashboard-logo">DASHBOARD</div>
+            <div class="dashboard-navbar">
+                <a href="{{url_for('home')}}">Home</a>
+                <a href="{{url_for('book')}}">Book</a>
+                <a href="{{url_for('logout')}}">Logout</a>
+            </div>
+        </div>
+        <div class="dashboard-container">
+            <h1 class="dashboard-text">Welcome {{ user_name }}</h1>
+            <div class="appointment-card">
+                <h2 class="upcoming-appointment-text">Upcoming Appointments</h2>
+                {% if appointments %}
+                <ul class="appointment-list">
+                    {% for appt in appointments %}
+                    <li class="appointment-item">
+                        <div class="appointment-details">
+                            <strong>{{ appt.service.name }}</strong>
+                            <span class="appointment-date">{{ appt.date.strftime('%b %d, %Y') }}</span>
+                            <span class="appointment-time">{{ appt.time }}</span>
+                            <span class="dentist-name">Dr. {{ appt.dentist.name }} ({{ appt.dentist.specialty }})</span>
+                            <span class="status-badge {{ 'confirmed' if appt.status == 'Confirmed' else 'pending' }}">
+                                {{ appt.status }}
+                            </span>
+                        </div>
+                        {% if appt.notes %}
+                        <div class="appointment-notes">
+                            <p>Notes: {{ appt.notes }}</p>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{url_for('book')}}">Book Another Appointment</a>
+            {% else %}
+                <p class="no-appointments">No upcoming appointments</p>
+                <a href="{{url_for('book')}}" class="book-btn">Book Your First Appointment</a>
+            {% endif %}
+                <!-- {% if appointments %}
+                    <ul>
+                        {% for appt in appointments %}
+                        <li>{{ appt.date }} at {{ appt.time }} with Dr. {{ appt.dentist.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No upcoming appointment</p>
+                {% endif %} -->
+            </div>
+            <div class="tips-card">
+                <h2>Oral health tips</h2>
+                <div class="tips-grid">
+                    <div class="tips-item">
+                        <h3>Brushing Basics</h3>
+                        <p> ✅ Brush twice daily (2 minutes each time)</p>
+                        <p> ✅ Use a soft-bristled toothbrush to avoid gum damage</p>
+                        <p> ✅ Replace your toothbrush every 3-4 months (or when bristles fray)</p>
+                    </div>
+                    <div class="tips-item">
+                        <h3>Flossing Matters</h3>
+                        <p> 🦷 Floss at least once a day to remove plaque between teeth</p>
+                        <p> 🦷 Try water flossers if traditional flossing is difficult</p>
+                    </div>
+                    <div class="tips-item">
+                        <h3> Watch Your Diet</h3>
+                        <p> Limit sugary & acidic foods (soda, candy, citrus)</p>
+                        <p> Eat teeth-friendly foods like cheese, leafy greens, and nuts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   {% endblock %}
+    

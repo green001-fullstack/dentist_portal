@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+     <div class="header">
+        <h1>Dentists Portal App</h1>
+        <nav class="navbar">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Book Appointment</a>
+        </nav>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+     </div>
+     <script src="https://kit.fontawesome.com/6ef258497b.js" crossorigin="anonymous"></script>
+
+     <!-- Hero Section -->
+      <section class="hero-content">
+        <!-- <ul class="toggle_btn">
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Book Appointment</a></li>
+        </ul> -->
+        <div class="hero-wrapper">
+            <img class="hero-image" src="{{ url_for('static', filename='images/hero-image.avif') }}" alt="hero-image">
+            <div class="overlay"></div>
+            <div class="hero-text">
+                <h2>The smile you have always wanted at your comfort</h2>
+                <p>We bring the dentist to you! Skip the waiting room and get professional dental care in
+                    the comfort of your home.
+                </p>
+                <a href="Login.html" class="book-btn">Book Now</a>
+            </div>
+      </div>
+      </section>
+       <!-- Benefit section -->
+      <section class="benefit-content">
+        <h2>Why Choose Our Service?</h2>
+        <div class="benefit-grid">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/home-visit.jpeg') }}" alt="Home visit">
+                <h3>Home Visits</h3>
+                <p>No travel needed - we come to you with full equipment</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/emergency.jpeg') }}" alt="Emergency">
+                <h3>Emergency</h3>
+                <p>Toothache at 2AM? We have dentists available</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/pricing.jpeg') }}" alt="Transparent">
+                <h3>Transparent Pricing</h3>
+                <p>Know the cost upfront - no hidden charges</p>
+            </div>
+      </div>
+      </section>
+
+      <!-- how it works section -->
+       <section class="how-it-works">
+        <h2>Book in 3 Simple Steps</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Enter Your Details</h3>
+                <p>Tell us your location and preferred time</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Choose Your Dentist</h3>
+                <p>Select from available specialists in your area</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Confirm Booking</h3>
+                <p>Get instant confirmation via SMS/email</p>
+            </div>
+        </div>
+        <a href="Login.html" class="cta">Get Started Now</a>
+       </section>
+
+       <!-- dentist section -->
+        <section class="dentist-list">
+            <h2>Our Top Rated Dentists</h2>
+            <div class="dentist-grid">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/emmanuel.jpg') }}" alt="dentist">
+                    <div>
+                        <h3>Oladimeji Emmanuel</h3>
+                        <p>Consultant Orthodontist</p>
+                        <div class="rating">★★★★★ 4.9 (128 reviews)</div>
+                    </div>
+                    <a href="Login.html" class="book-btn">Book Consultation</a>
+                </div>
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/taki.jpg') }}" alt="dentist">
+                    <div>
+                        <h3>Taki Pelumi</h3>
+                        <p>Consultant Oral and Maxillofacial Surgeon</p>
+                        <div class="rating">★★★★★ 4.6 (200 reviews)</div>
+                    </div>
+                    <a href="Login.html" class="book-btn">Book Consultation</a>
+                </div>
+                <div class="card">
+                   
+                    <img src="{{ url_for('static', filename='images/ben.jpg') }}" alt="dentist">
+                    <div>
+                        <h3>Omisore Benjamin</h3>
+                       <p>Consultant Conservative Dentistry</p>
+                       <div class="rating">★★★★★ 4.8 (150 reviews)</div>
+                    </div>  
+                    <a href="Login.html" class="book-btn">Book Consultation</a>
+                </div>
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/afolabi.jpg') }}" alt="dentist">
+                    <div>
+                        <h3>Afolabi Abayomi</h3>
+                        <p>Consultant Community Dentistry</p>
+                        <div class="rating">★★★★★ 4.6 (500 reviews)</div>
+                    </div>
+                    <a href="Login.html" class="book-btn">Book Consultation</a>
+                </div>
+            </div>
+        </section>
+{% endblock %}

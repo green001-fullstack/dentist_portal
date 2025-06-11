@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<div class="booking-container"><h2>Book Your Dentist Appointment</h2>
+<form class="booking-form" method="POST" action="{{ url_for('book') }}">
+    <select id="serviceSelect" name="service_id" required>
+        <option value="">Select a Service</option>
+        {% for service in services %}
+        <option value="{{ service.id }}">{{ service.name }} (₦{{ "%.2f"|format(service.price) }})</option>
+        {% endfor %}
+    </select>
+    
+    <select id="dentistSelect" name="dentist_id" required>
+        <option value="">Select a Dentist</option>
+        {% for dentist in dentists %}
+        <option value="{{ dentist.id }}">{{ dentist.name }} - {{ dentist.specialty }} ★ {{dentist.rating}}</option>
+        {% endfor %}
+    </select>
+
+    <input class="booking-input" type="date" id="appointmentDate" name="date" required>
+    
+    <select id="timeSlotSelect" name="time_slot" required>
+        <option value="">Select Time Slot</option>
+        <option value="09:00-10:00">09:00 AM - 10:00 AM</option>
+        <option value="10:00-11:00">10:00 AM - 11:00 AM</option>
+        <option value="11:00-12:00">11:00 AM - 12:00 PM</option>
+        <option value="12:00-13:00">12:00 PM - 01:00 PM</option>
+        <option value="14:00-15:00">02:00 PM - 03:00 PM</option>
+        <option value="15:00-16:00">03:00 PM - 04:00 PM</option>
+        <option value="16:00-17:00">04:00 PM - 05:00 PM</option>
+    </select>
+
+    <textarea name="notes" placeholder="Reason for visit (optional)"></textarea>
+    <button class="booking-button" type="submit">Book Appointment</button>
+</form></div>
+
+
+<script>
+    // Disable past dates
+    document.getElementById('appointmentDate').min = new Date().toISOString().split('T')[0];
+</script>
+{% endblock %}
